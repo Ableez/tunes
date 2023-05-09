@@ -1,0 +1,376 @@
+const data = [
+  {
+    userId: "6ffaceff290937acd6668d",
+    username: "Ableez",
+    email: "djayableez@gmail.com",
+    tasks: [
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Concept UI",
+        note: "You are to review the whole development process of making the new world tallest building.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+          {
+            username: "Dave",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Learning time 🎓",
+        note: "Go learn and continue the CS course.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Review test 🤠",
+        note: "You are to review the whole development process of making the new world tallest building.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    userId: "6ffaceff290937acd6668d",
+    username: "Ableez",
+    email: "djayableez@gmail.com",
+    tasks: [
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Concept UI",
+        note: "You are to review the whole development process of making the new world tallest building.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+          {
+            username: "Dave",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Learning time 🎓",
+        note: "Go learn and continue the CS course.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Review test 🤠",
+        note: "You are to review the whole development process of making the new world tallest building.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    userId: "6ffaceff290937acd6668d",
+    username: "Ableez",
+    email: "djayableez@gmail.com",
+    tasks: [
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Concept UI",
+        note: "You are to review the whole development process of making the new world tallest building.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+          {
+            username: "Dave",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Learning time 🎓",
+        note: "Go learn and continue the CS course.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Review test 🤠",
+        note: "You are to review the whole development process of making the new world tallest building.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    userId: "6ffaceff290937acd6668d",
+    username: "Ableez",
+    email: "djayableez@gmail.com",
+    tasks: [
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Concept UI",
+        note: "You are to review the whole development process of making the new world tallest building.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+          {
+            username: "Dave",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Learning time 🎓",
+        note: "Go learn and continue the CS course.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+      {
+        _id: "65cd98349fhhyy3478hf",
+        title: "Review test 🤠",
+        note: "You are to review the whole development process of making the new world tallest building.",
+        startDate: "2022-03-12",
+        dueDate: "2022-04-01",
+        reminder: {
+          interval: 3,
+          method: "notification",
+        },
+        repeat: 14,
+        taskType: "groupOwned",
+        admins: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+        participants: [
+          {
+            username: "Ableez",
+            profileImage:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwIFgppT_eCwo7O9K_WfRbrvug5zgZVnUA&usqp=CAU",
+          },
+        ],
+      },
+    ],
+  },
+];
+// module.exports = data;
+export default data;

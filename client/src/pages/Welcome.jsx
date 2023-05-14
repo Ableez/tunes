@@ -1,9 +1,10 @@
-import TasksCarousel from "../Components/TasksCarousel";
-
+import Carousel from "../Components/Carousel";
+import TaskHighlights from "../Components/TaskHighlights";
 const Welcome = () => {
   return (
     <div>
-      <TasksCarousel />
+      <Carousel />
+      <TaskHighlights />
     </div>
   );
 };

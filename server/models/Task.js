@@ -1,74 +1,91 @@
 const mongoose = require("mongoose");
-const User = require("../models/User");
 const Schema = mongoose.Schema;
 const TaskSchema = new Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "User",
-    },
-    owner: {
-      type: String,
-      required: true,
-    },
     title: {
       type: String,
       required: true,
     },
-    note: {
+    description: {
       type: String,
-      required: true,
     },
-    dueDate: {
-      type: Date,
+    creator_id: {
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "User",
     },
-    startDate: {
-      type: Date,
-      required: true,
-    },
-    participants: [
+    assignee_ids: [
       {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "User",
       },
     ],
-    // admins: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     required: true,
-    //     ref: "User",
-    //   },
-    // ],
-    reminder: {
-      type: Object,
-      default: null,
+
+    files: [
+      {
+        name: {
+          type: String
+        },
+        size: {
+          type: Number
+        },
+        encoding: {
+          type: String
+        },
+        tempFilePath: {
+          String
+        },
+        truncated: {
+          type: Boolean
+        },
+        mimetype: {
+          type: String
+        },
+        md5: {
+          type: String
+        },
+        task_id: {
+          type: mongoose.Schema.Types.ObjectId
+        }
+      }
+    ],
+    due_date: {
+      type: Date,
     },
-    isApproved: {
-      type: Boolean,
-      default: false,
+    repeat: {
+      type: String,
+      enum: ["daily", "weekly", "monthly", "custom"],
+    },
+    custom_repeat: {
+      type: Array,
+      interval: {
+        type: String,
+        enum: ["daily", "weekly", "monthly"],
+      },
+    }, // 1-7 for daily, 1-31 for monthly, or a list of custom days for custom repeat
+    reminder: {
+      type: Date,
+    },
+    steps: [
+      {
+        type: String,
+      },
+    ],
+    notes: {
+      type: String,
     },
     progress: {
       type: String,
-      enum: ["not started", "in progress", "completed"],
+      enum: ["not started", "completed"],
       default: "not started",
     },
-    repeat: {
-      type: Number,
-      default: 0,
-    },
-    taskType: {
+    task_list: {
       type: String,
-      enum: ["userOwned", "groupOwned"],
-      default: "userOwned",
+      enum: ["My day", "Tasks", "Important", "Planned", "Assigned to me"],
+      default: "Tasks",
     },
   },
   { timestamps: true }
 );
-
 module.exports = mongoose.model("Task", TaskSchema);
-
-
-

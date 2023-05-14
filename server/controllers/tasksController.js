@@ -2,6 +2,7 @@ const { format } = require("date-fns");
 const Task = require("../models/Task");
 const User = require("../models/User");
 const asyncHandler = require("express-async-handler");
+const path = require("path");
 
 // @desc Get all tasks
 // @route GET /tasks
@@ -73,6 +74,28 @@ const createNewTask = asyncHandler(async (req, res) => {
   } else {
     return res.status(400).json({ message: "Invalid task data received" });
   }
+});
+
+// @desc Add task files
+// @route POST /tasks
+// @access Private
+const uploadTaskFiles = asyncHandler(async (req, res) => {
+  const files = req.files;
+  console.log(files);
+
+  
+  Object.keys(files).forEach((key) => {
+    const filepath = path.join(__dirname, "tasks/files", files[key].name);
+    files[key].mv(filepath, (err) => {
+      if (err) return res.status(500).json({ status: "error", message: err });
+    });
+  });
+
+  return res.json({
+    status: "success",
+    message: Object.keys(files).toString(),
+    file: files
+  });
 });
 
 // @desc Create new tasks
@@ -201,4 +224,5 @@ module.exports = {
   updateTasks,
   deleteTask,
   getUserTasks,
+  uploadTaskFiles,
 };

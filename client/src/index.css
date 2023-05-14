@@ -47,3 +47,14 @@ body {
   height: 100px;
   width: 50px;
 }
+
+.carouselCard {
+  background-image: url("Assets/cardBg.svg");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-color: "#9C9AFF";
+  border-radius: 36px;
+  overflow: clip;
+}
+

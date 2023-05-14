@@ -1,19 +1,31 @@
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Welcome from "./pages/Welcome";
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, useCallback } from "react";
+import debounce from "lodash/debounce";
+import TestComp from "./Components/testComp";
 const App = () => {
-  // const [scrollDirection, setScrollDirection] = useState(null);
-
-  // write the logic to determine weather the user is scrolling up or down
+  const [scrollDirection, setScrollDirection] = useState(null);
+  const [lastScrollPos, setLastScrollPos] = useState(0);
+  const handleScroll = useCallback(
+    debounce(() => {
+      const st =
+        window.screenY ||
+        document.documentElement.scrollTop ||
+        window.pageYOffset;
+      if (st > lastScrollPos) {
+        setScrollDirection("down");
+      } else if (st < lastScrollPos) {
+        setScrollDirection("up");
+      }
+      setLastScrollPos(() => (st <= 0 ? 0 : st));
+    }, 60),
+    [lastScrollPos]
+  );
   useEffect(() => {
-    function scroll() {
-      console.table(window.screenY);
-    }
-    window.addEventListener("scroll", scroll());
-    return window.removeEventListener("scroll", scroll());
-  }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
   return (
     <div className="" style={{ height: "200vh" }}>
       <div className="md:w-2/3 w-full px-3 md:px-0 m-auto">
@@ -21,18 +33,15 @@ const App = () => {
           <Header />
         </div>
         <Welcome />
-        <div
-          className="footer"
-          style={{
-            // if users scrolls up display will be none, if they scroll down display will be fixed. but initially it will be visible
-            position: "fixed",
-            bottom: 0,
-            left: "50%",
-            transform: "transateX(-50%)",
-          }}
-        >
-          <Footer />
-        </div>
+      </div>
+      <div
+        className="md:w-full w-full md:px-0 mx-auto"
+        style={{
+          position: "fixed",
+          bottom: 0,
+        }}
+      >
+        <Footer scrollUp={scrollDirection === "down" ? false : true} />
       </div>
     </div>
   );

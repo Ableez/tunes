@@ -3,8 +3,7 @@ const Task = require("../models/Task");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
-const path = require("path");
-// const saveFile = require("../config/saveFile");
+const handleProfileImageUpload = require("../middleware/uploadProfileImage");
 
 // @desc Get all users
 // @route GET /users
@@ -21,7 +20,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @route POST /users
 // @access Private
 const createNewUser = asyncHandler(async (req, res) => {
-  const { username, email, password, profileImage } = req.body;
+  const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
     return res.status(400).json({ message: "All feilds are required" });
@@ -38,7 +37,6 @@ const createNewUser = asyncHandler(async (req, res) => {
     username: username,
     email: email,
     password: hashedPwd,
-    profileImage,
   };
 
   const createUser = await User.create(userObj);
@@ -51,34 +49,16 @@ const createNewUser = asyncHandler(async (req, res) => {
   }
 });
 
-const uploadProfileImage = asyncHandler(async (req, res) => {
-  const files = req.files;
-  console.log(files);
-
-  Object.keys(files).forEach((key) => {
-    const filepath = path.join(__dirname, "files", files[key].name);
-    files[key].mv(filepath, (err) => {
-      if (err) return res.status(500).json({ status: "error", message: err });
-    });
-  });
-  
-  return res.json({
-    status: "success",
-    message: Object.keys(files).toString(),
-  });
-});
-
 // @desc Get a user's tasks
 // @route GET /users
 // @access Private
-
 const getUserTasks = asyncHandler(async (req, res) => {
   const { creator_id } = req.body;
 
   if (!creator_id) {
     return res.status(409).json({ message: "Please insert a user ID" });
   }
-  const userTasks = await Task.findOne({ creator_id }).exec();
+  const userTasks = await Task.find({ creator_id }).exec();
 
   if (!userTasks) {
     return res.status(400).json({ message: "User has no tasks" });
@@ -91,10 +71,11 @@ const getUserTasks = asyncHandler(async (req, res) => {
 // @access Private
 
 const updateUser = asyncHandler(async (req, res) => {
-  const { username, password, email, profileImage, _id } = req.body;
+  const { username, password, email } = req.body;
+  const { _id } = req.params;
 
-  if (!username || !password || !email || !profileImage || !_id) {
-    return res.status(400).json({ message: "Provide a feild" });
+  if (!_id) {
+    return res.status(401).json({ message: "UNAUTHORIZED" });
   }
 
   const user = await User.findById(mongoose.Types.ObjectId(_id)).exec();
@@ -103,7 +84,7 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 
   const duplicate = await User.findOne({ username }).exec();
-  if (duplicate && duplicate?._id.toString() !== _id) {
+  if (duplicate && duplicate._id.toString() !== _id) {
     return res.status(409).json({ message: "Username already exists" });
   }
 
@@ -119,22 +100,23 @@ const updateUser = asyncHandler(async (req, res) => {
     user.password = await bcrypt.hash(password, 10);
   }
 
-  if (profileImage) {
-  }
   const updatedUser = await user.save();
 
-  res.json({ message: `${updatedUser.username} is successfully updated` });
+  if (updateUser) {
+    return res.json({ message: `${updatedUser.username} is updated` });
+  }
+  handleProfileImageUpload(req, res, _id);
 });
 
 // @desc Delete a users
 // @route DELETE /users
 // @access Private
 const deleteUser = asyncHandler(async (req, res) => {
-  const { userId } = req.body;
-  if (!userId) {
+  const { _id } = req.body;
+  if (!_id) {
     return res.status(400).json({ message: "Please provide an ID" });
   }
-  const user = await User.findById(mongoose.Types.ObjectId(userId)).exec();
+  const user = await User.findById(mongoose.Types.ObjectId(_id)).exec();
 
   if (!user) {
     return res.status(400).json({ message: "User not found" });
@@ -142,9 +124,9 @@ const deleteUser = asyncHandler(async (req, res) => {
 
   const result = await user.deleteOne();
 
-  const reply = `Username ${result.username} with ID ${result._id} has been deleted`;
+  const reply = `${result.username} has been deleted`;
 
-  res.json(reply);
+  res.json({ message: reply });
 });
 
 module.exports = {
@@ -153,5 +135,5 @@ module.exports = {
   updateUser,
   deleteUser,
   getUserTasks,
-  uploadProfileImage,
+  // uploadProfileImage,
 };

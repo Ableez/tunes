@@ -44,8 +44,3 @@ async function storeFile(filePath, fileName, contentType, metadata) {
 }
 
 module.exports = storeFile;
-
-// // Example usage
-// storeFile("/path/to/myfile.mp4", "myfile.mp4", "video/mp4", {
-//   author: "John Doe",
-// });

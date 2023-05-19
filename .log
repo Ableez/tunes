@@ -1,0 +1,747 @@
+  // const [colorIndex, setIndex] = useState(0);
+  // const colors = [
+  //   "#DEFFC3",
+  //   "#C3FFF4",
+  //   "#B0D0FF",
+  //   "#C0FFB0",
+  //   "#AEFF9A",
+  //   "#FFC49A",
+  //   "#9C9AFF",
+  //   "#FFACE8",
+  //   "#FFACCA",
+  //   "#ACFFB4",
+  //   "#FFE8AC",
+  //   "#C0F47C",
+  //   "#FF9595",
+  //   "#CE7DFF",
+  //   "#C05AFF",
+  // ];
+  // useEffect(() => {
+  //   setIndex(Math.floor(Math.random() * colors.length));
+  // }, []);
+
+
+
+
+
+
+
+
+"random backgroundColor"
+  // const [colorIndex, setIndex] = useState(0);
+  // const colors = [
+  //   "#DEFFC3",
+  //   "#C3FFF4",
+  //   "#B0D0FF",
+  //   "#C0FFB0",
+  //   "#AEFF9A",
+  //   "#FFC49A",
+  //   "#9C9AFF",
+  //   "#FFACE8",
+  //   "#FFACCA",
+  //   "#ACFFB4",
+  //   "#FFE8AC",
+  //   "#C0F47C",
+  //   "#FF9595",
+  //   "#CE7DFF",
+  //   "#C05AFF",
+  // ];
+  // useEffect(() => {
+  //   setIndex(Math.floor(Math.random() * colors.length));
+  // }, []);
+
+
+
+
+
+
+
+
+
+
+
+carouseltaskcard contents////
+  <div
+      className="carousel-cell cursor-pointer gap-4 md:w-96 p-8 h-48 grid grid-rows-2 mx-4 bg-center bg-fill rounded-3xl"
+      style={{
+        // border: "1px solid lime"
+        backgroundColor: "#ACFFB4",
+      }}
+    >
+      <h4 className="taskTitle h-fit font-semibold  ">{taskTitle}</h4>
+      <div className="grid place-items-center grid-cols-2 grid-flow-col w-full  justify-between">
+        <div className="users  flex justify-start self-center place-self-start align-middle h-fit">
+          <div key={Math.floor(Math.random() * 999999)} className="rounded-3xl">
+            <img
+              className="rounded-2xl profileImage transition-all duration-300 cursor-pointer object-cover w-10 h-10"
+              src={`${participantsImage}`}
+              // alt={`${participantsUsername}'s profile image`}
+              // title={`${participantsUsername}'s profile image`}
+            />
+          </div>
+        </div>
+        <div className="dueDate  self-center place-self-end h-fit float-right flex align-middle justify-center">
+          <i className="calender"></i>
+          <h3 className="font-semibold">{dueDate}</h3>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ <div className="carouselCard mr-3 md:w-2/4 rounded-3xl object-contain overflow-clip w-full">
+        <div
+          className="card cursor-pointer rounded-3xl gap-4 p-8 grid grid-rows-2 bg-center"
+          style={{
+            backgroundColor: "#9C9AFF",
+            height: "200px",
+            opacity: "0.8",
+          }}
+        >
+          <h4 className="taskTitle h-fit font-semibold  ">Concep UI 🔥</h4>
+          <div className="grid place-items-center grid-cols-2 grid-flow-col w-full  justify-between">
+            <div className="users  flex justify-start self-center place-self-start align-middle h-fit">
+              <div
+                key={Math.floor(Math.random() * 999999)}
+                className="rounded-3xl"
+              >
+                <img
+                  className="rounded-2xl profileImage transition-all duration-300 cursor-pointer object-cover w-10 h-10"
+                  src=""
+                />
+              </div>
+            </div>
+            <div className="dueDate  self-center place-self-end h-fit float-right flex align-middle justify-center">
+              <i className="calender"></i>
+              <h3 className="font-semibold">May 8</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="carouselCard mr-3 md:w-2/4 rounded-3xl object-contain overflow-clip w-full">
+        <div
+          className="card cursor-pointer rounded-3xl gap-4 p-8 grid grid-rows-2 bg-center"
+          style={{
+            backgroundColor: "#C0F47C",
+            height: "200px",
+            opacity: "0.8",
+          }}
+        >
+          <h4 className="taskTitle h-fit font-semibold  ">
+            Build an App with 🐍 or ☕
+          </h4>
+          <div className="grid place-items-center grid-cols-2 grid-flow-col w-full  justify-between">
+            <div className="users  flex justify-start self-center place-self-start align-middle h-fit">
+              <div
+                key={Math.floor(Math.random() * 999999)}
+                className="rounded-3xl"
+              >
+                <img
+                  className="rounded-2xl profileImage transition-all duration-300 cursor-pointer object-cover w-10 h-10"
+                  src=""
+                />
+              </div>
+            </div>
+            <div className="dueDate  self-center place-self-end h-fit float-right flex align-middle justify-center">
+              <i className="calender"></i>
+              <h3 className="font-semibold">May 8</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "working-- only allowing one element in the carousel scroll"
+    import { useEffect } from "react";
+import Flickity from "flickity";
+import CarouselTaskCard from "./CarouselTaskCard";
+// import data from "../utils/taskData";
+import tasks from "../utils/tasks";
+
+const TasksCarousel = () => {
+  useEffect(() => {
+    const flkty = new Flickity(".carouselOfImages", {
+      accessibility: false,
+      autoPlay: false,
+      pauseAutoPlayOnHover: false,
+      cellAlign: "left",
+      contain: false,
+      draggable: true,
+      friction: 0.2,
+      initialIndex: 0,
+      lazyLoad: false,
+      percentPosition: true,
+      prevNextButtons: false,
+      pageDots: false,
+      resize: true,
+      rightToLeft: false,
+      setGallerySize: true,
+      watchCSS: false,
+    });
+
+    // return () => flkty.destroy();
+  }, []);
+
+  // const carouselItems = tasks.map((task) => {
+  //   return (
+  //     <CarouselTaskCard
+  //       key={Math.floor(Math.random() * 9999999)}
+  //       participantsImage={task.participants.map((participant) => {
+  //         return participant.profileImage;
+  //       })}
+  //       participantsUsername={task.participants.map((participant) => {
+  //         return participant.username;
+  //       })}
+  //       taskTitle={task.title}
+  //       dueDate={task.dueDate}
+  //     />
+  //   );
+  // });
+
+  return (
+    <>
+      <div
+        className="grid place-items-center w-full relative"
+        style={{ overflow: "hidden" }}
+      >
+        <div className="carouselOfImages h-fit" style={{ width: "100%" }}>
+          <div className="bg-lime-400 p-28 mr-2 w-2/3 rounded-3xl text-center font-semibold text-white">
+            Hello test
+          </div>
+          <div className="bg-lime-400 p-28 mr-2 w-2/3 rounded-3xl text-center font-semibold text-white">
+            Hello test
+          </div>
+          <div className="bg-lime-400 p-28 mr-2 w-2/3 rounded-3xl text-center font-semibold text-white">
+            Hello test
+          </div>
+          <div className="bg-lime-400 p-28 mr-2 w-2/3 rounded-3xl text-center font-semibold text-white">
+            Hello test
+          </div>
+          {/* {carouselItems} */}
+        </div>
+        <div className="carouselCoverRight" style={{ height: "100vh" }}></div>
+      </div>
+    </>
+  );
+};
+
+export default TasksCarousel;
+
+
+
+ <div
+          className="carouselOfImages h-screen border-2"
+          style={{ width: "100%" }}
+        >
+          {/* {carouselItems} */}
+          {tasks.map((task) => (
+            <CarouselTaskCard
+              key={Math.floor(Math.random() * 9999999)}
+             
+              taskTitle={task.title}
+              dueDate={task.dueDate}
+            />
+          ))}
+        </div>
+
+
+
+
+{tasks.map((task) => (
+            <CarouselTaskCard
+              key={task._id}
+              taskTitle={task.title}
+              participantsUsername={task.participants[0].username}
+              participantsImage={task.participants[0].profileImage}
+              dueDate={task.dueDate}
+            />
+          ))}
+
+
+
+    <div className="carouselCard mr-3 md:w-2/4 rounded-3xl object-contain overflow-clip w-full" >
+        <div
+          className="card cursor-pointer rounded-3xl gap-4 p-8 grid grid-rows-2 bg-center"
+          style={{
+            backgroundColor: "#C0F47C",
+            height: "200px",
+            opacity: "0.8",
+          }}
+        >
+          <h4 className="taskTitle h-fit font-semibold  ">
+            Build an App with 🐍 or ☕
+          </h4>
+          <div className="grid place-items-center grid-cols-2 grid-flow-col w-full  justify-between">
+            <div className="users  flex justify-start self-center place-self-start align-middle h-fit">
+              <div
+                key={Math.floor(Math.random() * 999999)}
+                className="rounded-3xl"
+              >
+                <img
+                  className="rounded-2xl profileImage transition-all duration-300 cursor-pointer object-cover w-10 h-10"
+                  src=""
+                />
+              </div>
+            </div>
+            <div className="dueDate  self-center place-self-end h-fit float-right flex align-middle justify-center">
+              <i className="calender"></i>
+              <h3 className="font-semibold">May 8</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<FontAwesomeIcon icon="fa-solid fa-house-blank" />
+
+
+
+
+
+
+
+
+ const outBtn = document.querySelectorAll("btn");
+  useEffect(() => {
+    const clickedFunc = (e) => {
+      const { name } = e.target;
+      setBtnGroup((prev) => {
+        return {
+          ...prev,
+          [name]: !prev[name],
+        };
+      });
+      console.log(btnGroup)
+    };
+    outBtn.forEach((btn) => {
+      btn.addEventListener("click", clickedFunc);
+    });
+
+    return () => {
+      outBtn.forEach((btn) => {
+        btn.removeEventListener("click", clickedFunc);
+      });
+    };
+  }, [btnGroup]);
+
+
+
+
+    <div className="transition-all duration-300">
+              {btnGroup.search === true && "Search"}
+            </div>
+
+
+
+            grid text  place-items-center my-3 font-semibold
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import homeIcon from "../Assets/home.svg";
+import taskIcon from "../Assets/tasks.svg";
+import searchIcon from "../Assets/search.svg";
+import addTaskIcon from "../Assets/addTask.svg";
+import homeClickedIcon from "../Assets/homeClicked.svg";
+import taskClickedcon from "../Assets/tasksClicked.svg";
+import searchClickedIcon from "../Assets/searchClicked.svg";
+import { useEffect, useState } from "react";
+const Footer = ({ scrollUp }) => {
+  const [btnGroup, setBtnGroup] = useState({
+    home: false,
+    task: false,
+    search: false,
+    addTask: false,
+  });
+  useEffect(() => {}, []);
+  const clickedFunc = (name) => {
+    setBtnGroup(() => {
+      return {
+        home: false,
+        task: false,
+        search: false,
+        addTask: false,
+        [name]: true,
+      };
+    });
+  };
+  return (
+    <div className="footer py-4 md:my-4 mx-auto md:w-2/6 w-full flex align-middle justify-center">
+      {scrollUp && (
+        <div className="rounded-3xl transition-all duration-300 bg-neutral-200 h-20 pr-8  w-5/6 grid place-items-center grid-flow-col">
+          <button
+            onClick={() => {
+              clickedFunc("home");
+            }}
+            name="home"
+            className={` flex align-middle justify-center cursor-pointer icon"`}
+          >
+            <img
+              src={btnGroup.home === true ? homeClickedIcon : homeIcon}
+              className="w-7 md:w-6 md:my-3 m-2 transition-all duration-300"
+              alt=""
+            />
+            <div className="grid text  place-items-center my-3 font-semibold transition-all duration-300">
+              {btnGroup.home === true && "Home"}
+            </div>
+          </button>
+          <button
+            onClick={() => {
+              clickedFunc("task");
+            }}
+            name="task"
+            className={` flex align-middle justify-center cursor-pointer allTasks"`}
+          >
+            <img
+              src={btnGroup.task === true ? taskClickedcon : taskIcon}
+              className="w-7 md:w-6 md:my-3 m-2 transition-all duration-300"
+              alt=""
+            />
+            <div className="grid text  place-items-center my-3 font-semibold transition-all duration-300">
+              {btnGroup.task === true && "Task"}
+            </div>
+          </button>
+          <button
+            onClick={() => {
+              clickedFunc("search");
+            }}
+            name="search"
+            className={`flex align-middle justify-center cursor-pointer searchTasks"`}
+          >
+            <img
+              src={btnGroup.search === true ? searchClickedIcon : searchIcon}
+              className="w-7 md:w-6 md:my-3 m-2 transition-all duration-300"
+              alt=""
+            />
+            <div className="grid text  place-items-center my-3 font-semibold transition-all duration-300">
+              {btnGroup.search === true && "Search"}
+            </div>
+          </button>
+        </div>
+      )}
+      <div className="w-20 h-20 grid bg-indigo-400 -ml-7 cursor-pointer rounded-3xl float-right place-items-center ">
+        <button
+          onClick={() => clickedFunc("addTask")}
+          name="addTask"
+          className={`ex align-middle justify-center addTasks cursor-pointer"`}
+        >
+          <img src={addTaskIcon} className="w-7 md:w-6 md:m-1 m-2" alt="" />
+        </button>
+      </div>
+    </div>
+  );
+};
+export default Footer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import homeIcon from "../Assets/home.svg";
+import taskIcon from "../Assets/tasks.svg";
+import searchIcon from "../Assets/search.svg";
+import addTaskIcon from "../Assets/addTask.svg";
+import homeClickedIcon from "../Assets/homeClicked.svg";
+import taskClickedcon from "../Assets/tasksClicked.svg";
+import searchClickedIcon from "../Assets/searchClicked.svg";
+import { useEffect, useState } from "react";
+const Footer = ({ scrollUp }) => {
+  const [btnGroup, setBtnGroup] = useState({
+    home: false,
+    task: false,
+    search: false,
+    addTask: false,
+  });
+  useEffect(() => {}, []);
+  const clickedFunc = (name) => {
+    setBtnGroup(() => {
+      return {
+        home: false,
+        task: false,
+        search: false,
+        addTask: false,
+        [name]: true,
+      };
+    });
+  };
+  return (
+    <div className="footer py-4 md:my-4 mx-auto md:w-2/6 w-full flex align-middle justify-center">
+      {scrollUp && (
+        <div className="rounded-3xl transition-all duration-300 bg-neutral-200 h-20 pr-8  w-5/6 grid place-items-center grid-flow-col">
+          <button
+            onClick={() => {
+              clickedFunc("home");
+            }}
+            name="home"
+            className={` flex align-middle justify-center cursor-pointer icon"`}
+          >
+            <img
+              src={btnGroup.home === true ? homeClickedIcon : homeIcon}
+              className="w-7 md:w-6 md:my-3 m-2 transition-all duration-300"
+              alt=""
+            />
+            {btnGroup.home === true ? (
+              <div className="grid text place-items-center my-3 font-semibold">
+                Home
+              </div>
+            ) : (
+              ""
+            )}
+          </button>
+          <button
+            onClick={() => {
+              clickedFunc("task");
+            }}
+            name="task"
+            className={` flex align-middle justify-center cursor-pointer allTasks"`}
+          >
+            <img
+              src={btnGroup.task === true ? taskClickedcon : taskIcon}
+              className="w-7 md:w-6 md:my-3 m-2 transition-all duration-300"
+              alt=""
+            />
+            {btnGroup.task === true ? (
+              <div className="grid text  place-items-center my-3 font-semibold">
+                Task
+              </div>
+            ) : (
+              ""
+            )}
+          </button>
+          <button
+            onClick={() => {
+              clickedFunc("search");
+            }}
+            name="search"
+            className={`flex align-middle justify-center cursor-pointer searchTasks"`}
+          >
+            <img
+              src={btnGroup.search === true ? searchClickedIcon : searchIcon}
+              className="w-7 md:w-6 md:my-3 m-2 transition-all duration-300"
+              alt=""
+            />
+            {btnGroup.search === true ? (
+              <div className="grid text place-items-center my-3 font-semibold">
+                Search
+              </div>
+            ) : (
+              ""
+            )}
+          </button>
+        </div>
+      )}
+      <div className="w-20 h-20 grid bg-indigo-400 -ml-7 cursor-pointer rounded-3xl float-right place-items-center ">
+        <button
+          onClick={() => clickedFunc("addTask")}
+          name="addTask"
+          className={`ex align-middle justify-center addTasks cursor-pointer"`}
+        >
+          <img src={addTaskIcon} className="w-7 md:w-6 md:m-1 m-2" alt="" />
+        </button>
+      </div>
+    </div>
+  );
+};
+export default Footer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ useEffect(() => {
+    const flkty = new Flickity(".carouselOfImages", {
+      accessibility: false,
+      autoPlay: false,
+      pauseAutoPlayOnHover: false,
+      cellAlign: `${screen}`,
+      contain: false,
+      draggable: true,
+      friction: 0.2,
+      initialIndex: 0,
+      lazyLoad: false,
+      percentPosition: true,
+      prevNextButtons: false,
+      pageDots: false,
+      resize: true,
+      rightToLeft: false,
+      setGallerySize: true,
+      watchCSS: false,
+    });
+
+    return () => flkty.destroy();
+  }, [screen]);

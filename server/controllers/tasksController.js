@@ -2,7 +2,7 @@ const { format } = require("date-fns");
 const Task = require("../models/Task");
 const User = require("../models/User");
 const asyncHandler = require("express-async-handler");
-const path = require("path");
+const { saveFileReference } = require("../middleware/fileSave");
 
 // @desc Get all tasks
 // @route GET /tasks
@@ -19,57 +19,63 @@ const getAllTasks = asyncHandler(async (req, res) => {
   res.json(tasks);
 });
 
-// @desc Get a user's tasks
-// @route GET /tasks
-// @access Private
-const getUserTasks = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  const userTasks = await Task.findOne({ id }).lean();
-
-  if (!userTasks || userTasks.length === 0) {
-    return res.status(400).json({ message: "No user tasks found" });
-  }
-
-  // find user's userTasks
-  res.json(userTasks);
-});
-
 // @desc Create new tasks
 // @route POST /tasks
 // @access Private
 const createNewTask = asyncHandler(async (req, res) => {
   const {
-    user,
-    owner,
     title,
-    note,
-    admins,
-    dueDate,
-    startDate,
-    participants,
-    taskType,
-    reminder,
+    description,
+    creator_id,
+    assignee_ids,
+    files,
+    due_date,
     repeat,
+    custom_repeat,
+    reminder,
+    steps,
+    notes,
+    progress,
+    task_list,
   } = req.body;
-  if (!note || !title || !user) {
-    return res.status(400).json({ message: "Important fields are required" });
+  if (!title && !creator_id) {
+    return res.status(400).json({ message: "title is required" });
+  }
+
+  const user = await User.findById(creator_id).exec();
+
+  if (!user) {
+    return res.status(401).json({ message: "UNAUTHORIZED" });
   }
 
   const newTask = {
-    user: user,
-    owner: owner,
     title: title,
-    note: note,
-    dueDate: dueDate,
-    startDate: startDate,
-    admins: admins,
-    participants: participants,
-    taskType: taskType,
-    reminder: reminder,
+    description: description,
+    creator_id: creator_id,
+    assignee_ids: assignee_ids,
+    files: files,
+    due_date: due_date,
     repeat: repeat,
+    custom_repeat: custom_repeat,
+    reminder: reminder,
+    steps: steps,
+    notes: notes,
+    progress: progress,
+    task_list: task_list,
   };
   const task = await Task.create(newTask);
+
   if (task) {
+    // Save task refrence to the user
+    user.tasks.push(task._id);
+    user.save();
+
+    // this is when the task is created and
+    if (user) {
+      task.assignee_ids.push(creator_id);
+      task.save();
+    }
+
     return res.status(201).json({ message: "New task created" });
   } else {
     return res.status(400).json({ message: "Invalid task data received" });
@@ -79,53 +85,64 @@ const createNewTask = asyncHandler(async (req, res) => {
 // @desc Add task files
 // @route POST /tasks
 // @access Private
-const uploadTaskFiles = asyncHandler(async (req, res) => {
-  const files = req.files;
-  console.log(files);
+// const uploadTaskFiles = asyncHandler(async (req, res) => {
+//   const files = req.files;
+//   console.log(files);
 
-  
-  Object.keys(files).forEach((key) => {
-    const filepath = path.join(__dirname, "tasks/files", files[key].name);
-    files[key].mv(filepath, (err) => {
-      if (err) return res.status(500).json({ status: "error", message: err });
-    });
-  });
+//   Object.keys(files).forEach((key) => {
+//     const filepath = path.join(__dirname, "tasks/files", files[key].name);
+//     files[key].mv(filepath, (err) => {
+//       if (err) return res.status(500).json({ status: "error", message: err });
+//     });
+//   });
 
-  return res.json({
-    status: "success",
-    message: Object.keys(files).toString(),
-    file: files
-  });
-});
+//   return res.json({
+//     status: "success",
+//     message: Object.keys(files).toString(),
+//     file: files
+//   });
+// });
 
 // @desc Create new tasks
 // @route POST /tasks
 // @access Private
 const updateTasks = asyncHandler(async (req, res) => {
+  // get all changeable fields
   const {
     _id,
     title,
-    note,
-    admins,
-    dueDate,
-    participants,
-    reminder,
+    creator_id,
+    assignee_ids,
+    files,
+    due_date,
     repeat,
-    taskType,
+    custom_repeat,
+    reminder,
+    steps,
+    notes,
+    progress,
+    task_list,
   } = req.body;
 
-  // get all changeable fields and check if any is filled
+  // check task _id is not passed
+  if (!_id) {
+    return res.status(400).json({ message: "Please provide a task id" });
+  }
 
+  // check if values are not passed for all
   if (
-    !_id &&
     !title &&
-    !note &&
-    !admins &&
-    !dueDate &&
-    !participants &&
-    !reminder &&
+    !creator_id &&
+    !assignee_ids &&
+    !files &&
+    !due_date &&
     !repeat &&
-    !taskType
+    !custom_repeat &&
+    !reminder &&
+    !steps &&
+    !notes &&
+    !progress &&
+    !task_list
   ) {
     return res.status(304).json({ message: "Nothing changed" });
   }
@@ -139,35 +156,15 @@ const updateTasks = asyncHandler(async (req, res) => {
   if (title) {
     task.title = title;
   }
-  if (note) {
-    task.note = note;
+  if (creator_id) {
+    task.creator_id = creator_id;
   }
-  if (admins) {
-    // first check for duplicate ids in the previous task state and remove the duplicate. or we can leave this be because we will controll adding user to this array using the frontend
-
-    // using the spread operator stores dublicate values
-    // task.admins = [...task.admins, ...admins];
-
-    admins.forEach((admin) => {
-      if (!task.admins.includes(admin)) {
-        task.admins.push(admin);
-      }
-    });
+  if (assignee_ids) {
+    task.assignee_ids = assignee_ids;
   }
-  if (dueDate) {
-    task.dueDate = dueDate;
-  }
-  if (participants) {
-    // first check for duplicate ids in the previous task state and remove the duplicate. or we can leave this be because we will controll adding user to this array using the frontend
-
-    // using the spread operator stores dublicate values
-    // task.participants = [...task.participants, ...participants];
-
-    participants.forEach((participant) => {
-      if (!task.participants.includes(participant)) {
-        task.participants.push(participant);
-      }
-    });
+  if (files) {
+    // saveFileReference(req, res, next())
+    task.files = files;
   }
   if (reminder) {
     task.reminder = reminder;
@@ -175,36 +172,55 @@ const updateTasks = asyncHandler(async (req, res) => {
   if (repeat) {
     task.repeat = repeat;
   }
+  if (due_date) {
+    task.due_date = due_date;
+  }
+  if (custom_repeat) {
+    task.custom_repeat = custom_repeat;
+  }
+  if (repeat) {
+    task.repeat = repeat;
+  }
+  if (steps) {
+    task.steps = steps;
+  }
+  if (notes) {
+    task.notes = notes;
+  }
+  if (progress) {
+    task.progress = progress;
+  }
+  if (task_list) {
+    task.task_list = task_list;
+  }
 
   const taskUpdated = await task.save();
 
   if (!taskUpdated) {
     return res
       .status(500)
-      .json({ message: "Error! an error occured. Try again" });
+      .json({ message: "Task was not saved! an error occured. Try again" });
   }
 
-  const reply = `${taskUpdated.title} updated`;
-  res.json(reply);
+  const reply = `Task Updated`;
+  res.status(201).json(reply);
 });
 
 // @desc Delete new tasks
 // @route DELETE /tasks
 // @access Private
 const deleteTask = asyncHandler(async (req, res) => {
-  const { taskId, userId } = req.body;
+  const { task_id, user_id } = req.body;
 
-  const userObj = await User.findById(userId).exec();
+  const user = await User.findById(user_id).exec();
+  const userOwnsTask = await Task.findOne({ user_id }).exec();
 
   // check for task
-  const task = await Task.findById(taskId).exec();
-  const userIsAdmin = task.admins.map((x) => {
-    return x._id === userId ? true : false;
-  });
+  const task = await Task.findById(task_id).exec();
 
-  // check if user is a participant or an admin in the group
-  if (!userObj && !userIsAdmin) {
-    return res.status(401).json({ message: "Unauthorized" });
+  // check if user exists
+  if (!user || !userOwnsTask) {
+    return res.status(401).json({ message: "UNAUTHORIZED" });
   }
 
   // if all reqs are not met disallow delete
@@ -212,10 +228,10 @@ const deleteTask = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "Task not found" });
   }
 
-  const result = await task.deleteOne();
+  const result = await task.delete();
 
-  const reply = `Note deleted`;
-  res.json(reply);
+  const reply = `Task deleted`;
+  res.json({ message: reply });
 });
 
 module.exports = {
@@ -223,6 +239,4 @@ module.exports = {
   createNewTask,
   updateTasks,
   deleteTask,
-  getUserTasks,
-  uploadTaskFiles,
 };

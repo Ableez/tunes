@@ -17,10 +17,22 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
+    tasks: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
     profileImage: {
-      type: Object,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "File",
     },
+    files: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "File",
+      },
+    ],
   },
   { timestamps: true }
 );

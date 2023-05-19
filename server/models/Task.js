@@ -17,38 +17,14 @@ const TaskSchema = new Schema(
     assignee_ids: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "User",
       },
     ],
-
     files: [
       {
-        name: {
-          type: String
-        },
-        size: {
-          type: Number
-        },
-        encoding: {
-          type: String
-        },
-        tempFilePath: {
-          String
-        },
-        truncated: {
-          type: Boolean
-        },
-        mimetype: {
-          type: String
-        },
-        md5: {
-          type: String
-        },
-        task_id: {
-          type: mongoose.Schema.Types.ObjectId
-        }
-      }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "File",
+      },
     ],
     due_date: {
       type: Date,
@@ -58,10 +34,12 @@ const TaskSchema = new Schema(
       enum: ["daily", "weekly", "monthly", "custom"],
     },
     custom_repeat: {
-      type: Array,
+      times: {
+        type: Array,
+      },
       interval: {
         type: String,
-        enum: ["daily", "weekly", "monthly"],
+        enum: ["days", "weeks", "months"],
       },
     }, // 1-7 for daily, 1-31 for monthly, or a list of custom days for custom repeat
     reminder: {
@@ -77,7 +55,7 @@ const TaskSchema = new Schema(
     },
     progress: {
       type: String,
-      enum: ["not started", "completed"],
+      enum: ["not started", "in progress", "completed"],
       default: "not started",
     },
     task_list: {

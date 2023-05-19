@@ -12,6 +12,7 @@ const userRoutes = require("./routes/userRoutes");
 const tasksRoutes = require("./routes/taskRoutes");
 const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
+const Grid = require("gridfs-stream");
 const PORT = process.env.PORT || 3500;
 app.use("/", express.static(path.join(__dirname, "public")));
 
@@ -47,7 +48,10 @@ app.all("*", (req, res) => {
 
 app.use(errorHandler);
 
+// let gfs;
 mongoose.connection.once("open", (response) => {
+  // gfs = Grid(mongoose.connection.db, mongoose.mongo);
+  // gfs.collection("uploads");
   console.log("Connected to MongoDB");
   logEvents(`success\t\ \tMongoDB connected\t${response}`, "mongoDBLog.log");
   app.listen(PORT, (e) => {
@@ -61,4 +65,3 @@ mongoose.connection.on("error", (err) => {
     "mongoDBLog.log"
   );
 });
-  

@@ -1,0 +1,70 @@
+{
+    "title": "finish the site",
+    "description": "test run task",
+    "creator_id": "645f596eb55eef0227643136",
+    "assignee_ids": [
+        "645f596eb55eef0227643136"
+    ],
+    "files": [],
+    "due_date": "2023-05-15T18:31:57.282Z",
+    "repeat": "weekly",
+    "custom_repeat": {
+        "times": [
+            1,
+            5,
+            6
+        ],
+        "interval": "daily"
+    },
+    "reminder": "2023-05-15T18:31:57.282Z",
+    "steps": [
+        "make the backend",
+        "build the front end"
+    ],
+    "notes": "i wanna make sure im done with this shitt ASAP",
+    "progress": "not started",
+    "task_list": "My day"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const user = await User.findById(mongoose.Types.ObjectId(_id)).exec();
+// if (!user) {
+//   res.status(401).json({ message: "UNAUTHORIZED! User not found." });
+// }
+// user.files = fileId;
+// const updatedUser = await user.save();
+// console.log("save");
+// res.status(200).json({
+//   message: `${updatedUser.username}'s file has beed added to their account`,
+// });
+
+// //       ".pptx",
+// //       ".txt",
+// //       ".pdf",
+// //       ".docx",
+// //       ".doc",
+// //       ".xlsx",
+// //       ".xls",
+// //       ".pptx",
+// //       ".ppt",
+// //       ".jpeg",
+// //       ".jpg",
+// //       ".png",
+// //       ".gif",
+// //       ".mp3",
+// //       ".wav",
+// //       ".mp4",
+// //       ".avi",

@@ -2,59 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 :root {
+  font-family: 'Montserrat', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  font-family: "Montserrat", sans-serif;
 }
-body {
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #fcf9fb;
-  color: #222222;
+body{
+  background-color: rgb(244, 246, 247);
 }
-.profileImage:hover {
-  transform: scale(1.02);
-}
-.carousel-cell {
-  width: 80%;
-  counter-increment: carousel-cell;
-}
-/* Left gradient cover for carousel cards */
-/* .carouselCoverLeft {
-  position: absolute;
-  z-index: 999;
-  left: 0;
-  background: linear-gradient(
-    91.26deg,
-    #fcf9fb 0.76%,
-    rgba(252, 249, 251, 0) 79.86%
-  );
-  height: 100px;
-  width: 50px;
-} */
-.carouselCoverRight {
-  position: absolute;
-  z-index: 999;
-  right: 0;
-  background: linear-gradient(
-    272.37deg,
-    #fcf9fb 2.25%,
-    rgba(252, 249, 251, 0) 84.37%
-  );
-  height: 100px;
-  width: 50px;
-}
-
-.carouselCard {
-  background-image: url("Assets/cardBg.svg");
-  background-size: 80%;
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-color: "#9C9AFF";
-  border-radius: 36px;
-  overflow: clip;
-}
-

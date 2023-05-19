@@ -5,14 +5,40 @@ import addTaskIcon from "../Assets/addTask.svg";
 import homeClickedIcon from "../Assets/homeClicked.svg";
 import taskClickedcon from "../Assets/tasksClicked.svg";
 import searchClickedIcon from "../Assets/searchClicked.svg";
-import { useEffect, useState } from "react";
-const Footer = ({ scrollUp }) => {
+import debounce from "lodash/debounce";
+import { useCallback, useEffect, useState } from "react";
+const Footer = () => {
+  const [scrollDirection, setScrollDirection] = useState(null);
+  const [lastScrollPos, setLastScrollPos] = useState(0);
+
+  const handleScroll = useCallback(
+    debounce(() => {
+      const st =
+        window.screenY ||
+        document.documentElement.scrollTop ||
+        window.pageYOffset;
+      if (st > lastScrollPos) {
+        setScrollDirection("down");
+      } else if (st < lastScrollPos) {
+        setScrollDirection("up");
+      }
+      setLastScrollPos(() => (st <= 0 ? 0 : st));
+    }, 60),
+    [lastScrollPos]
+  );
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
   const [btnGroup, setBtnGroup] = useState({
     home: false,
     task: false,
     search: false,
     addTask: false,
   });
+
   useEffect(() => {}, []);
   const clickedFunc = (name) => {
     setBtnGroup(() => {
@@ -25,6 +51,8 @@ const Footer = ({ scrollUp }) => {
       };
     });
   };
+
+  const scrollUp = scrollDirection === "down" ? false : true;
   return (
     <div className="footer py-4 md:my-4 mx-auto md:w-2/6 w-full flex align-middle justify-center">
       {scrollUp && (

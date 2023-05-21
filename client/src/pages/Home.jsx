@@ -1,7 +1,6 @@
 import LeftHome from "../Components/LeftHome";
 import RightHome from "../Components/rightHome";
 import Navbar from "../Components/Navbar";
-
 const Home = () => {
   return (
     <div>

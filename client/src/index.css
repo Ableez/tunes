@@ -2,13 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-body{
+
+body {
   background-color: rgb(244, 246, 247);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #ffffff;
+  }
+}
+.listhero {
+  display: none;
+}
+.sidebar li:hover .listhero {
+  display: flex;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #3d3d3d;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #555555; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5c5c5c; 
+}
+
+@media only screen and (max-width: 768px) {
+  .rightHome{
+    display: none;
+  }
+  .leftHome{
+    width: 100vw;
+  }
 }

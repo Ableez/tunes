@@ -25,6 +25,8 @@ router
   })
   .delete(deleteTask);
 
+router.route("/:creator_id").get(getAllTasks);
+router.route("/:task_id").get(getAllTasks);
 router
   .route("/:task_id")
   .patch(handleUploadErrors, saveFileReference, (req, res) => {

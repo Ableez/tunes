@@ -116,6 +116,16 @@ To add or update further informations about a task
 }
 ```
 <!--  -->
+Get user's tasks
+<!--  -->
+```md
+### GET
+
+#### [localhost:3500/tasks?task_id=INSERT_ID](localhost:3500/tasks?task_id=6467d0ba40724ccd4752f325)
+```
+<!--  -->
+
+<!--  -->
 Delete user's tasks
 <!--  -->
 ```md

@@ -1,0 +1,8 @@
+get user's details 
+localhost:3500/?task_id=6467d0ba40724ccd4752f325
+
+get a task
+localhost:3500/tasks?task_id=6467d0ba40724ccd4752f325
+
+get a task
+localhost:3500/tasks?task_id=6467d0ba40724ccd4752f325

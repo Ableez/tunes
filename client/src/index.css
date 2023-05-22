@@ -26,7 +26,6 @@ body {
   display: flex;
 }
 
-
 /* width */
 ::-webkit-scrollbar {
   width: 12px;
@@ -36,22 +35,47 @@ body {
 ::-webkit-scrollbar-track {
   background-color: #3d3d3d;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: #555555; 
+  background-color: #555555;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #5c5c5c; 
+  background: #5c5c5c;
 }
 
 @media only screen and (max-width: 768px) {
-  .rightHome{
+  .rightHome {
     display: none;
   }
-  .leftHome{
+  .leftHome {
     width: 100vw;
+  }
+}
+
+.taskMenu {
+  display: none;
+}
+.task:hover .taskMenu {
+  display: block;
+}
+
+@keyframes taskMenu {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
   }
 }

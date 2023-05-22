@@ -8,12 +8,20 @@ const handleProfileImageUpload = require("../middleware/uploadProfileImage");
 // @desc Get all users
 // @route GET /users
 // @access Private
-const getAllUsers = asyncHandler(async (req, res) => {
-  const users = await User.find().select("-password");
-  if (users.length === 0) {
-    return res.status(400).json({ message: "No users found" });
+const getAUser = asyncHandler(async (req, res) => {
+  const user_id = req.query.user_id;
+
+  if (!user_id) {
+    return res.status(404).json({ message: "Please provide an Id" });
   }
-  res.json(users);
+
+  const users = await User.findOne({ user_id }).select("-password");
+
+  if (!users || users.length === 0) {
+    return res.status(400).json({ message: "User does not exists" });
+  }
+
+  res.status(200).json(users);
 });
 
 // @desc Create new users
@@ -53,10 +61,10 @@ const createNewUser = asyncHandler(async (req, res) => {
 // @route GET /users
 // @access Private
 const getUserTasks = asyncHandler(async (req, res) => {
-  const { creator_id } = req.body;
+  const creator_id = req.query.creator_id;
 
   if (!creator_id) {
-    return res.status(409).json({ message: "Please insert a user ID" });
+    return res.status(400).json({ message: "Provide a user Id" });
   }
   const userTasks = await Task.find({ creator_id }).exec();
 
@@ -130,7 +138,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-  getAllUsers,
+  getAUser,
   createNewUser,
   updateUser,
   deleteUser,

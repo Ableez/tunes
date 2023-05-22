@@ -8,15 +8,30 @@ const { saveFileReference } = require("../middleware/fileSave");
 // @route GET /tasks
 // @access Private
 const getAllTasks = asyncHandler(async (req, res) => {
-  const { user, username } = req.params;
-  const tasks = await Task.find().lean();
+  const creator_id = req.query.creator_id;
+  const task_id = req.query.task_id;
 
-  if (!tasks || tasks.length === 0) {
-    return res.status(400).json({ message: "No tasks found" });
+  if (!creator_id && !task_id) {
+    return res
+      .status(400)
+      .json({ error: "Either creator_id or task_id must be specified" });
   }
 
-  // find user's tasks
-  res.json(tasks);
+  if (creator_id) {
+    const userTasks = await Task.find({ creator_id }).lean();
+    if (!userTasks || userTasks.length === 0) {
+      return res.status(400).json({ message: "No tasks found" });
+    }
+    return res.status(200).json(userTasks);
+  }
+
+  if (task_id) {
+    const getOneTask = await Task.findOne({ task_id }).lean();
+    if (!getOneTask) {
+      return res.status(400).json({ message: "Task does not exists" });
+    }
+    return res.status(200).json(getOneTask);
+  }
 });
 
 // @desc Create new tasks

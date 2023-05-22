@@ -2,19 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  getAllUsers,
+  getAUser,
   createNewUser,
   updateUser,
   deleteUser,
-  getUserTasks,
 } = require("../controllers/usersControllers");
 
-router.route("/").get(getAllUsers).post(createNewUser).delete(deleteUser);
+router.route("/").post(createNewUser).put(updateUser).delete(deleteUser);
 
 router.route("/:_id").patch(updateUser, (req, res) => {
   res.json({ file: req.file });
 });
 
-router.route("/tasks").get(getUserTasks);
+router.route("/:user_id").get(getAUser);
 
 module.exports = router;

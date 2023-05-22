@@ -10,6 +10,7 @@
       }
     ],
     "button-type": "off",
-    "detect-css-reflows/composite": "off"
+    "detect-css-reflows/composite": "off",
+    "compat-api/css": "off"
   }
 }

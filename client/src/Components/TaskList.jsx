@@ -3,15 +3,16 @@ import { useState } from "react";
 import chevron from "../Assets/chevron-right.svg";
 import "flowbite";
 import TaskGroupView from "./TaskGroupView";
+import { tasksData } from "../utils/tasksData";
 
 const TaskList = ({ list, icon }) => {
   const [rotateChevron, setRotateChevron] = useState(false);
 
-  const tasksGroup = tasksData.map(() => {
+  const tasksGroup = tasksData.map((task) => {
     return (
       <TaskGroupView
-        taskTitle={"Task title goes here😎✨"}
-        completed={false}
+        taskTitle={task.title}
+        completed={task.progress === "completed"}
         link={"/task"}
       />
     );

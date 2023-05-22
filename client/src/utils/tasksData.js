@@ -1,7 +1,7 @@
 export const tasksData = [
   {
     _id: "6467d0ba40724ccd4752f325",
-    title: "TASK TITLE",
+    title: "Visit Grandma👨‍👩‍👧‍👧",
     creator_id: "6467d02b40724ccd4752f31c",
     assignee_ids: ["6467d02b40724ccd4752f31c"],
     files: [],
@@ -17,7 +17,7 @@ export const tasksData = [
   },
   {
     _id: "6467d11840724ccd4752f32c",
-    title: "ABLEEZ SECOND TASK",
+    title: "Make more money",
     creator_id: "6467d02b40724ccd4752f31c",
     assignee_ids: ["6467d02b40724ccd4752f31c"],
     files: [],
@@ -33,7 +33,7 @@ export const tasksData = [
   },
   {
     _id: "6467d12940724ccd4752f331",
-    title: "TRAVELING TASK",
+    title: "Prepare for the trip✈",
     creator_id: "6467d02b40724ccd4752f31c",
     assignee_ids: ["6467d02b40724ccd4752f31c"],
     files: [],
@@ -41,7 +41,7 @@ export const tasksData = [
     custom_repeat: { times: [] },
     reminder: "2023-05-15T18:31:57.282Z",
     steps: [],
-    progress: "not started",
+    progress: "completed",
     task_list: "Tasks",
     createdAt: "2023-05-19T19:42:33.110Z",
     updatedAt: "2023-05-19T19:42:33.548Z",
@@ -49,7 +49,7 @@ export const tasksData = [
   },
   {
     _id: "6467d14a40724ccd4752f336",
-    title: "BUILD A HOUSE",
+    title: "Party tyme🎆🎉",
     creator_id: "6467d04a40724ccd4752f31f",
     assignee_ids: ["6467d04a40724ccd4752f31f"],
     files: [],
@@ -65,7 +65,7 @@ export const tasksData = [
   },
   {
     _id: "6467d15540724ccd4752f33b",
-    title: "PROPERTY SALES",
+    title: "Property docs📝",
     creator_id: "6467d04a40724ccd4752f31f",
     assignee_ids: ["6467d04a40724ccd4752f31f"],
     files: [],

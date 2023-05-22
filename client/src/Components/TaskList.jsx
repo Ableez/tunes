@@ -3,6 +3,7 @@ import { useState } from "react";
 import chevron from "../Assets/chevron-right.svg";
 import "flowbite";
 import TaskGroupView from "./TaskGroupView";
+import {tasksData} from "../utils/tasksData"
 
 const TaskList = ({ list, icon }) => {
   const [rotateChevron, setRotateChevron] = useState(false);
@@ -12,7 +13,7 @@ const TaskList = ({ list, icon }) => {
       <TaskGroupView
         taskTitle={"Task title goes here😎✨"}
         completed={false}
-        link={"/task"}
+        // link={"/task"}
       />
     );
   });

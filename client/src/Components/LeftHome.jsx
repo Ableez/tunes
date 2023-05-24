@@ -15,7 +15,7 @@ const LeftHome = ({ menuOpen, setOpenMenu }) => {
     <div className="h-full transition-all duration-200">
       <div className="sidebar h-full border-r border-light-gray dark:border-dark-gray-03">
         <button
-          className={`p-5 `}
+          className={`m-5 `}
           onClick={() => {
             setOpenMenu((prev) => !prev);
           }}

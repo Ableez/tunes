@@ -10,11 +10,18 @@ import assignedTask from "../Assets/assignedTask.svg";
 import { AppContext } from "../App";
 
 const RightHome = () => {
+  const [viewTask, setViewTask] = useState({
+    view: false,
+    _id: "",
+  });
+
   const [icons, setIcon] = useState({
     icon: "",
     list: "",
   });
+
   const { urlPath } = useContext(AppContext);
+
   useEffect(() => {
     if (urlPath === "day") {
       setIcon({

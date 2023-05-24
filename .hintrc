@@ -11,6 +11,7 @@
     ],
     "button-type": "off",
     "detect-css-reflows/composite": "off",
-    "compat-api/css": "off"
+    "compat-api/css": "off",
+    "detect-css-reflows/layout": "off"
   }
 }

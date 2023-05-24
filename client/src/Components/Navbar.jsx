@@ -6,14 +6,13 @@ import bell from "../Assets/notification.svg";
 
 const Navbar = () => {
   return (
-    <header className="flex align-middle justify-between border-b dark:bg-dark-gray-06 bg-light-gray-06  border-light-gray-03 dark:border-dark-gray-03 ">
-      <nav className="md:w-1/5 flex pl-6 py-2 align-middle justify-start hover:bg-light-gray-03 dark:hover:bg-neutral-900 cursor-pointer select-none transition-all duration-200">
+    <header className="flex align-middle justify-between border-b dark:bg-dark-gray-06 bg-light-gray-06  border-light-gray-03 dark:border-dark-gray-03 " style={{height: "10vh"}}>
+      <nav className="md:w-1/5 border-r border-dark-gray-03 flex pl-6 py-2 align-middle justify-start hover:bg-light-gray-03 dark:hover:bg-neutral-900 cursor-pointer select-none transition-all duration-200">
         <img src={logo} alt="" className="w-5 h-full mr-4" />
         <div className="username  h-fit place-self-center">
           <h4 className="font-bold text-md " style={{ lineHeight: "1" }}>
-            Ableez
+            Task Manager
           </h4>
-          <p style={{ fontSize: "11px" }}>ableez@task.com</p>
         </div>
       </nav>
       <div className="flex pr-6 py-2 place-self-center justify-self-end ">

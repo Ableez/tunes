@@ -7,7 +7,7 @@ import { AppContext } from "../App";
 import { useContext } from "react";
 
 const LeftHome = () => {
-  const { urlPath, setUrlPath } = useContext(AppContext);
+  const { setUrlPath } = useContext(AppContext);
 
   return (
     <div className="h-full  transition-all duration-200">
@@ -18,11 +18,9 @@ const LeftHome = () => {
               <button
                 className="py-4 px-4 flex w-full"
                 onClick={() => {
-                  console.log(urlPath);
                   setUrlPath("day");
                 }}
               >
-                <span className="listhero w-1 bg-blue absolute h-3  rounded-full top-1/2 -translate-y-1/2 left-0"></span>
                 <img
                   className="mr-4 w-5 flex align-middle justify-center"
                   src={day}
@@ -35,11 +33,9 @@ const LeftHome = () => {
               <button
                 className="py-4 px-4 flex w-full"
                 onClick={() => {
-                  console.log(urlPath);
                   setUrlPath("important");
                 }}
               >
-                <span className="listhero w-1 bg-blue absolute h-3  rounded-full top-1/2 -translate-y-1/2 left-0"></span>
                 <img
                   className="mr-4 w-5 flex align-middle justify-center"
                   src={star}
@@ -52,11 +48,9 @@ const LeftHome = () => {
               <button
                 className="py-4 px-4 flex w-full"
                 onClick={() => {
-                  console.log(urlPath);
                   setUrlPath("planned");
                 }}
               >
-                <span className="listhero w-1 bg-blue absolute h-3  rounded-full top-1/2 -translate-y-1/2 left-0"></span>
                 <img
                   className="mr-4 w-4 flex align-middle justify-center"
                   src={planned}
@@ -69,11 +63,9 @@ const LeftHome = () => {
               <button
                 className="py-4 px-4 flex w-full"
                 onClick={() => {
-                  console.log(urlPath);
                   setUrlPath("assigned");
                 }}
               >
-                <span className="listhero w-1 bg-blue absolute h-3  rounded-full top-1/2 -translate-y-1/2 left-0"></span>
                 <img
                   className="mr-4 w-4 flex align-middle justify-center"
                   src={assignedTask}
@@ -86,11 +78,9 @@ const LeftHome = () => {
               <button
                 className="py-4 px-4 flex w-full"
                 onClick={() => {
-                  console.log(urlPath);
                   setUrlPath("tasks");
                 }}
               >
-                <span className="listhero w-1 bg-blue absolute h-3  rounded-full top-1/2 -translate-y-1/2 left-0"></span>
                 <img
                   className="mr-4 w-4 flex align-middle justify-center"
                   src={tasks}

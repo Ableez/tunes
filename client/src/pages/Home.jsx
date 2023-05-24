@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex align-top justify-items-stretch h-screen dark:bg-dark-gray-06 bg-light-gray-06">
+      <div className="flex align-top justify-items-stretch dark:bg-dark-gray-06 bg-light-gray-06">
         <div className="leftHome md:w-1/5">
           <LeftHome />
         </div>

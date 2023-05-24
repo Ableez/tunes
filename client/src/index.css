@@ -1,6 +1,10 @@
+@import url('./input.scss');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 :root {
   font-family: "Montserrat", sans-serif;
   font-synthesis: none;
@@ -12,6 +16,7 @@
 
 body {
   background-color: rgb(244, 246, 247);
+  height: 100vh;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,3 +84,6 @@ body {
     opacity: 1;
   }
 }
+
+
+

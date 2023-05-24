@@ -1,18 +1,21 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useRef, useState } from "react";
-import taskmenu from "../Assets/taskmenu.svg";
+import { Fragment, useEffect, useRef, useState, useContext } from "react";
+import taskmenuIcon from "../Assets/taskmenuIcon.svg";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { AppContext } from "../App";
 
-export default function MenuDropdown() {
+export default function MenuDropdown({ _id }) {
+  const { taskMenu, setTaskMenuAction } = useContext(AppContext);
   return (
-    <Menu as="div" className="relative bg-dark-gray-04 h-fit rounded-2xl text-left">
-      <div className=" grid place-items-center ">
-        <Menu.Button className="p-2">
-          <img alt="Task Menu" src={taskmenu} className="w-5" />
-          {/* <ChevronDownIcon
-              className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
-              aria-hidden="true"
-            /> */}
+    <Menu
+      as="div"
+      className="bg-dark-gray-04 h-fit rounded-2xl text-left"
+    >
+      <div className=" grid place-items-center">
+        <Menu.Button className="p-2  ">
+          <img alt="Task Menu" src={taskmenuIcon} className="w-5 " />
         </Menu.Button>
       </div>
       <Transition
@@ -29,6 +32,12 @@ export default function MenuDropdown() {
             <Menu.Item>
               {({ active }) => (
                 <button
+                  onClick={() => {
+                    setTaskMenuAction({
+                      action: "edit",
+                      _id: _id,
+                    });
+                  }}
                   className={`${
                     active
                       ? "bg-light-teal dark:bg-dark-blue  text-white"
@@ -53,6 +62,12 @@ export default function MenuDropdown() {
             <Menu.Item>
               {({ active }) => (
                 <button
+                  onClick={() => {
+                    setTaskMenuAction({
+                      action: "duplicate",
+                      _id: _id,
+                    });
+                  }}
                   className={`${
                     active
                       ? "bg-light-teal dark:bg-dark-blue  text-white"
@@ -79,6 +94,12 @@ export default function MenuDropdown() {
             <Menu.Item>
               {({ active }) => (
                 <button
+                  onClick={() => {
+                    setTaskMenuAction({
+                      action: "move",
+                      _id: _id,
+                    });
+                  }}
                   className={`${
                     active
                       ? "bg-light-teal dark:bg-dark-blue  text-white"
@@ -105,6 +126,12 @@ export default function MenuDropdown() {
             <Menu.Item>
               {({ active }) => (
                 <button
+                  onClick={() => {
+                    setTaskMenuAction({
+                      action: "delete",
+                      _id: _id,
+                    });
+                  }}
                   className={`${
                     active
                       ? "bg-light-teal dark:bg-dark-blue  text-white"

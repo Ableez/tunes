@@ -46,7 +46,7 @@ const RightHome = () => {
 
   return (
     <div
-      className="overflow-y-scroll"
+      className="overflow-y-scroll duration-200"
       style={{ height: "90vh", boxSizing: "border-box" }}
     >
       <div

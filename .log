@@ -745,3 +745,6 @@ export default Footer;
 
     return () => flkty.destroy();
   }, [screen]);
+
+
+mongodb+srv://djayableez:QQ2OAysAjRGNOgJ1@cluster0.ljcyfgj.mongodb.net/?retryWrites=true&w=majority

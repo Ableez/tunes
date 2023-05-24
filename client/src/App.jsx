@@ -21,15 +21,15 @@ const App = () => {
       };
     });
   };
-  console.log(taskMenu);
+
   return (
     <BrowserRouter>
       <AppContext.Provider
         value={{ urlPath, setUrlPath, taskMenu, setTaskMenuAction }}
       >
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </AppContext.Provider>
     </BrowserRouter>
   );

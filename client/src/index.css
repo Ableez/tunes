@@ -95,18 +95,21 @@ body {
   flex-shrink: 0;
   display: flex;
   flex-direction: row-reverse;
-  justify-items: stretch;
   z-index: 55;
+  position: relative;
 }
 
 
 .app-sidebar .app-sidebar-resizer {
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 4px; border: 1px solid white;
-  justify-self: flex-start;
+  flex-basis: 4px;
+  justify-self: auto;
   cursor: e-resize;
   resize: horizontal;
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  top: 0;
+  left: 0;
 }
 
 .app-sidebar .app-sidebar-resizer:hover {

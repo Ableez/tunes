@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import { AppContext } from "../App";
 
-const TaskContent = ({ className, taskTitle, completed, _id }) => {
+const TaskContent = ({ className, flexBasis, taskTitle, completed, _id }) => {
   const { taskMenu, setTaskMenuAction } = useContext(AppContext);
   const [taskCompleted, setTaskCompleted] = useState({});
 
@@ -14,9 +15,11 @@ const TaskContent = ({ className, taskTitle, completed, _id }) => {
   };
 
   return (
-    <div>
-      <div className={className}>
-        <div className="task dark:bg-neutral-800 peer bg-light-gray-03 transition-colors p-4 py-4 cursor-pointer hover:bg-dark-gray-05 duration-200 hover:border-dark-gray-04 border mb-2 border-neutral-800 rounded-lg flex  align-middle justify-between">
+      <div
+        className={`${className} w-full justify-center grid place-items-center h-full`}
+        style={{ flexBasis: flexBasis }}
+      >
+        <div className="task border dark:bg-neutral-800 peer bg-light-gray-03 transition-colors p-4 py-4 cursor-pointer hover:bg-dark-gray-05 duration-200 hover:border-dark-gray-04 mb-2 border-neutral-800 rounded-lg flex align-middle justify-between">
           <div className="grid grid-flow-col place-items-center gap-3">
             <input
               id={`checkbox-${_id}`}
@@ -37,7 +40,6 @@ const TaskContent = ({ className, taskTitle, completed, _id }) => {
           <h4></h4>
         </div>
       </div>
-    </div>
   );
 };
 

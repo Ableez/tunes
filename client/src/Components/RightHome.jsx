@@ -175,11 +175,14 @@ const RightHome = () => {
       </div>
       <div
         ref={sidebarRef}
-        className="app-sidebar w-full border border-dark-gray"
+        className="app-sidebar w-full grid place-items-center"
         style={{ flexBasis: sidebarWidth }}
         onMouseDown={(e) => e.preventDefault()}
       >
-        <TaskContent className="w-full border app-sidebar-content" />
+        <TaskContent
+          className="w-full justify-self-center app-sidebar-content"
+          flexBasis={sidebarWidth}
+        />
         <div className="app-sidebar-resizer" onMouseDown={startResizing} />
       </div>
     </div>

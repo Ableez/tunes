@@ -33,17 +33,18 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background-color: #3d3d3d;
+  background-color: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background-color: #555555;
+  border-radius: 20px;
 }
 
 /* Handle on hover */

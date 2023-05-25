@@ -13,7 +13,7 @@ const LeftHome = ({ menuOpen, setOpenMenu }) => {
   const side = document.querySelector("#side");
 
   return (
-    <div className="h-full transition-all duration-200" id="side">
+    <div className="h-full transition-all" id="side">
       <div className="sidebar h-full border-r border-light-gray dark:border-dark-gray-03">
         <button
           className={`m-5 `}
@@ -26,12 +26,12 @@ const LeftHome = ({ menuOpen, setOpenMenu }) => {
         <div className="list">
           <ul>
             <li
-              className={`flex relative duration-100 mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start `}
+              className={`flex relative mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start `}
             >
               <button
                 className={`${
                   menuOpen ? "px-4" : "align-middle justify-center"
-                } py-4 duration-300 flex w-full`}
+                } py-4 flex w-full`}
                 onClick={() => {
                   setUrlPath("day");
                 }}
@@ -39,18 +39,18 @@ const LeftHome = ({ menuOpen, setOpenMenu }) => {
                 <img
                   className={`${
                     menuOpen ? "mr-4" : ""
-                  } w-5 grid duration-300 origin-bottom place-items-center justify-center`}
+                  } w-5 grid origin-bottom place-items-center justify-center`}
                   src={day}
                   alt=""
                 />
                 {menuOpen && " My day"}
               </button>
             </li>
-            <li className="flex relative duration-100 mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start w-full">
+            <li className="flex relative mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start w-full">
               <button
                 className={`${
                   menuOpen ? "px-4" : "align-middle justify-center"
-                } py-4 duration-300 flex w-full`}
+                } py-4 flex w-full`}
                 onClick={() => {
                   setUrlPath("important");
                 }}
@@ -58,18 +58,18 @@ const LeftHome = ({ menuOpen, setOpenMenu }) => {
                 <img
                   className={`${
                     menuOpen ? "mr-4" : ""
-                  } w-5 grid duration-300 origin-bottom place-items-center justify-center`}
+                  } w-5 grid origin-bottom place-items-center justify-center`}
                   src={star}
                   alt=""
                 />
                 {menuOpen && "Important"}
               </button>
             </li>
-            <li className="flex relative duration-100 mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start w-full">
+            <li className="flex relative mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start w-full">
               <button
                 className={`${
                   menuOpen ? "px-4" : "align-middle justify-center"
-                } py-4 duration-300 flex w-full`}
+                } py-4 flex w-full`}
                 onClick={() => {
                   setUrlPath("planned");
                 }}
@@ -77,18 +77,18 @@ const LeftHome = ({ menuOpen, setOpenMenu }) => {
                 <img
                   className={`${
                     menuOpen ? "mr-4" : ""
-                  } w-5 grid duration-300 origin-bottom place-items-center justify-center`}
+                  } w-5 grid origin-bottom place-items-center justify-center`}
                   src={planned}
                   alt=""
                 />
                 {menuOpen && "Planned"}
               </button>
             </li>
-            <li className="flex relative duration-100 mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start w-full">
+            <li className="flex relative mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start w-full">
               <button
                 className={`${
                   menuOpen ? "px-4" : "align-middle justify-center"
-                } py-4 duration-300 flex w-full`}
+                } py-4 flex w-full`}
                 onClick={() => {
                   setUrlPath("assigned");
                 }}
@@ -96,18 +96,18 @@ const LeftHome = ({ menuOpen, setOpenMenu }) => {
                 <img
                   className={`${
                     menuOpen ? "mr-4" : ""
-                  } w-5 grid duration-300 origin-bottom place-items-center justify-center`}
+                  } w-5 grid origin-bottom place-items-center justify-center`}
                   src={assignedTask}
                   alt=""
                 />
                 {menuOpen && "Assigned to me"}
               </button>
             </li>
-            <li className="flex relative duration-100 mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start w-full">
+            <li className="flex relative mb-1  rounded-lg cursor-pointer hover:bg-neutral-800 text-sm align-middle justify-start w-full">
               <button
                 className={`${
                   menuOpen ? "px-4" : "align-middle justify-center"
-                } py-4 duration-300 flex w-full`}
+                } py-4 flex w-full`}
                 onClick={() => {
                   setUrlPath("tasks");
                 }}
@@ -115,7 +115,7 @@ const LeftHome = ({ menuOpen, setOpenMenu }) => {
                 <img
                   className={`${
                     menuOpen ? "mr-4" : ""
-                  } w-5 grid duration-300 origin-bottom place-items-center justify-center`}
+                  } w-5 grid origin-bottom place-items-center justify-center`}
                   src={tasks}
                   alt=""
                 />

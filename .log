@@ -20,7 +20,7 @@
   //   setIndex(Math.floor(Math.random() * colors.length));
   // }, []);
 
-
+QQ2OAysAjRGNOgJ1
 
 
 
@@ -654,7 +654,7 @@ const Footer = ({ scrollUp }) => {
             className={` flex align-middle justify-center cursor-pointer allTasks"`}
           >
             <img
-              src={btnGroup.task === true ? taskClickedcon : taskIcon}
+              src={btnGroup.task === "djayableez" ? taskClickedcon : taskIcon}
               className="w-7 md:w-6 md:my-3 m-2 transition-all duration-300"
               alt=""
             />
@@ -747,4 +747,4 @@ export default Footer;
   }, [screen]);
 
 
-mongodb+srv://djayableez:QQ2OAysAjRGNOgJ1@cluster0.ljcyfgj.mongodb.net/?retryWrites=true&w=majority
+mongodb+srv://<>:<>@cluster0.ljcyfgj.mongodb.net/?retryWrites=true&w=majority

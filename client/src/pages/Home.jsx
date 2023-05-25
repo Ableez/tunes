@@ -1,8 +1,8 @@
 import LeftHome from "../Components/LeftHome";
-import RightHome from "../Components/rightHome";
+import RightHome from "../Components/RightHome";
 import Navbar from "../Components/Navbar";
 import { useState } from "react";
-import TaskView from "../Components/TaskView";
+
 const Home = () => {
   const [menuOpen, setOpenMenu] = useState(false);
 
@@ -15,11 +15,8 @@ const Home = () => {
         <div className={`${menuOpen ? "md:w-1/5" : "w-20"} `}>
           <LeftHome menuOpen={menuOpen} setOpenMenu={setOpenMenu} />
         </div>
-        <div className={`rightHome duration-300 ${menuOpen ? "md:w-4/5" : ""}`}>
+        <div className={`rightHome duration-100 ${menuOpen ? "md:w-4/5" : "w-full"}`}>
           <RightHome />
-        </div>
-        <div className={`rightHome duration-300 w-full`}>
-          <TaskView />
         </div>
       </div>
     </div>

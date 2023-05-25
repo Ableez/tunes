@@ -28,7 +28,7 @@ const TaskList = () => {
     );
   });
   return (
-    <div className="taskList w-full">
+    <div className="taskList w-full pt-2 h-full overflow-y-scroll">
 
       <div className="sort w-full mb-8 px-4">
         <button
